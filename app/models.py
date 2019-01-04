@@ -11,8 +11,8 @@ def load_user(user_id):
 
 class Role(db.Model):
     __tablename__ = 'roles'
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(64), unique = True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
 
     def __repr__(self):
         return '<Role %r' % self.name
@@ -20,10 +20,10 @@ class Role(db.Model):
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key = True)
-    mobile = db.Column(db.Integer, nullable = False, index = True)
-    identity = db.Column(db.String(20), nullable = False, index=True)
-    name = db.Column(db.String(12), nullable = False, index = True)
+    id = db.Column(db.Integer, primary_key=True)
+    mobile = db.Column(db.Integer, nullable=False, index=True)
+    identity = db.Column(db.String(20), nullable=False, index=True)
+    name = db.Column(db.String(12), nullable=False, index=True)
     password_hash = db.Column(db.String(128))
     role_id = db.Column(db.Integer, db.ForgignKey ('roles.id'))
 
