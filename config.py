@@ -13,17 +13,20 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin'
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql+pymysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin?charset=utf8'
 
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin'
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql+pymysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin?charset=utf8'
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin'
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql+pymysql://lianghuaxiong:lianghuaxiong@localhost/bitcoin?charset=utf8'
 
 
-config = {'development':DevelopmentConfig, 'testing':DevelopmentConfig, 'production':DevelopmentConfig, 'default':DevelopmentConfig}
+config = {'development': DevelopmentConfig, 'testing': DevelopmentConfig, 'production': DevelopmentConfig, 'default': DevelopmentConfig}
 
