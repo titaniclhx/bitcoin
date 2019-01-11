@@ -12,6 +12,7 @@ def login():
         user = User.query.filter_by(mobile=form.mobile.data).first()
         if user is not None and user.verif_password(form.password.data):
             login_user(user, form.remember_me.data)
+            print('55555555555555')
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('invalid username or password!')
     return render_template('auth/login.html', form=form)
@@ -22,7 +23,7 @@ def login():
 def logout():
     logout_user()
     flash('你已退出！')
-    return render_template(url_for('main.index'))
+    return redirect(url_for('main.index'))
 
 
 
