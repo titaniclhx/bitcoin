@@ -23,10 +23,10 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     mobile = db.Column(db.BigInteger, nullable=False, index=True)
-    identity = db.Column(db.String(20), nullable=False, index=True)
     name = db.Column(db.String(12), nullable=False, index=True)
+    identity = db.Column(db.String(20), nullable=False, index=True)
     password_hash = db.Column(db.String(128))
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), default=2)
 
 
     @property
