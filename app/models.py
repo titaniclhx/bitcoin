@@ -13,7 +13,9 @@ class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
-    users = db.relationship('User', backref='role')
+    default = db.column(db.Bollean, default=False, index=True)
+    permissions = db.column(db.Integer)
+    users = db.relationship('User', backref='role', lazy='dynamic')
 
     def __repr__(self):
         return '<Role %r' % self.name
@@ -40,9 +42,12 @@ class User(UserMixin, db.Model):
     def verif_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def is_administrator(self):
+        if self.role_id == 1:
+            return True
+        else:
+            return False
+
     def __repr__(self):
         return '<User %r' % self.name
-
-
-
 
