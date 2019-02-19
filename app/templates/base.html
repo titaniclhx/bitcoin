@@ -25,7 +25,11 @@
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if current_user.is_authenticated %}
+                {% if current_user.is_authenticated and current_user.is_administrator() %}
+                <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
+                <li><a href="{{ url_for('auth.change_password') }}">管理员修改密码</a></li>
+                {% elif current_user.is_authenticated %}
                 <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
                 <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
                 {% else %}
